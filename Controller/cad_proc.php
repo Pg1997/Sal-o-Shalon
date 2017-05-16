@@ -8,11 +8,11 @@
 
 	*/
 	session_start();
-	#Função para conexão com o banco de dados.
-	function conecta(){
-		$connect = mysqli_connect('localhost','root','', 'projeto shalon');
-		return $connect;
-	}
+	#Conexão com o banco de dados.
+	
+	$connect = mysqli_connect('localhost','root','', 'projeto shalon');
+	
+	
 	#Dados vindos do formulário de cadastro de procedimentos.
 	$cpf   = $_POST['cpf'];
 	$marca = $_POST['marca'];
@@ -23,9 +23,9 @@
 	$pont  = $_POST['pont'];	
 	
 	#Comando em sql para verificar se o cpf informado é válido.
-	$result = mysqli_query(conecta(), "select ID from cliente where cpf = '".$cpf."';");
+	$result = mysqli_query($connect, "select ID from cliente where cpf = '".$cpf."';")or die(mysqli_error($connect));
 
-	/*		Neste if, se o cpf for inválido é adicionado a variavél $_SESSION["resposta"] = "false" e o usuário é redirecionado 
+	/*		Neste if, se o cpf for inválido é adicionado a variável $_SESSION["resposta"] = "false" e o usuário é redirecionado 
 	para o formulário de cadastro de procedimento, caso contrário é feito a inserção dos dados do procedimento na tabela 
 	procedimento e o usuário é redirecionado para o mesmo formulário.*/
 	if(mysqli_num_rows($result)==0 || mysqli_num_rows($result)>1){
@@ -33,10 +33,14 @@
 		header("Location:../dist/cad_procedimento.php");					
 	}else{
 		$id = mysqli_fetch_assoc($result);
-		$result = mysqli_query(conecta(), "insert into procedimento (ID_Cliente, Marca, Tipo_OX, Resultado, Nome_pro, Pontuacao, Tipo, data) values( ".$id["ID"]." , '".$marca."', '".$ox."', '".$res."', '".$nproc."', '".$pont."', '".$tipo."', '"."20".date("y/m/d")."')")or die("Erro!");
+		$i = 0;
+		while($i < 20){
+			$result = mysqli_query($connect, "insert into procedimento (ID_Cliente, Marca, Tipo_OX, Resultado, Nome_pro, Pontuacao, Tipo, data) values( ".$id["ID"]." , '".$marca."', '".$ox."', '".$res."', '".$nproc."', '".$pont."', '".$tipo."', '20".date("y/m/d")."');")or die(mysqli_error($connect));
+			$i++;	
+		}
 		$_SESSION["resposta"] = "true";
 		header("Location:../dist/cad_procedimento.php");
 	}
 	
-	mysqli_close(conecta());
+	mysqli_close($connect);
 ?>

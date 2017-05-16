@@ -1,6 +1,12 @@
 <?php
-  session_start();
+  //session_start();
+  /*
+    Autor: Paulo Gabriel Ronchini
+    Data: 08/05/2017
+    Tela de login do administrador do sistema do salão.
+  */
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>

@@ -1,3 +1,12 @@
+<!--
+
+  Autor: Paulo Gabriel Ronchini
+  Data: 08/05/2017
+
+  Tela de cadastro de dados na tabela pessoa. 
+  Obs: Os dados cadastrados nesta tabela são usados tanto por usuários do sistema do salão como por alunos da escola de beleza.
+  
+-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,6 +44,7 @@
       </div>
     </nav>
     <div class="container" style="background-color:white; max-width:800px;">
+                    <!--Formulário de cadastro de de dados pessoais-->
                     <form class="form-horizontal" action="../Controller/cad_user.php" method="POST" id="cad_adm">                
                         <h3 class="h3">Cadastro de cliente >> Informações pessoais</h3>
                         <div class="form-group">
@@ -122,7 +132,19 @@
                               </label>
                             </div>
                           </div>
-                        </div>                      
+                        </div>  
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="inputPassword">Telefone</label>
+                          <div class="col-sm-3">
+                            <input class="form-control" id="tel" type="tel"  name="tel" placeholder="Telefone" required>                            
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="inputPassword">Celular</label>
+                          <div class="col-sm-3">
+                            <input class="form-control" id="cel" type="tel"  name="cel" placeholder="Celular" required>                            
+                          </div>
+                        </div>                    
             					  <!--<div class="form-group">					
               						<label class="col-lg-2 control-label">Escolher foto</label>
               						   <div class="col-lg-10">

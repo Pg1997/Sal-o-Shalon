@@ -3,7 +3,7 @@
   Autor: Paulo Gabriel Ronchini
   Data: 08/05/2017
 
-  Tela para cadastro de diagnóstico.
+  Tela para cadastro de diagnósticos.
 */
 
   session_start();
@@ -11,7 +11,7 @@ if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
     header("Location:page_login.php");
   }
 /*
-    Verifica a variavel de sessão $_SESSION["resposta"] que indica se o cpf informado foi encontrado e informa ao usuário o resultado
+    Verifica a variavel de sessão $_SESSION["resposta"] que indica se o cpf informado foi encontrado e se o diagnóstico foi cadastrado, e informa ao usuário o resultado da aperação. 
 */
 if(isset($_SESSION["resposta"])){
   if($_SESSION["resposta"] == 'false'){
@@ -49,96 +49,9 @@ if(isset($_SESSION["resposta"])){
       }
     </script>
   </head>
-  <body class="sidebar-mini fixed">
-    <div class="wrapper">
-      <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.html">Shalon</a>
-        <nav class="navbar navbar-static-top">
-          <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
-          <!-- Navbar Right Menu-->
-          <div class="navbar-custom-menu">
-            <ul class="top-nav">
-              <!--Notification Menu-->
-              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
-                <ul class="dropdown-menu">
-                  <li class="not-head">Você tem 0 novas notoficações.</li>
-                  
-                </ul>
-              </li>
-              <!-- User Menu-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
-                <ul class="dropdown-menu settings-menu">
-                  <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Configurações</a></li>
-                  <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
-                  <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Sair</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Side-Nav-->
-      <aside class="main-sidebar hidden-print">
-        <section class="sidebar">
-          <div class="user-panel">
-            <div class="pull-left image"><img class="img-circle" src="imagens/user.png" alt="User Image"></div>
-            <div class="pull-left info">
-              <p>Aléx dos Santos</p>
-              <p class="designation">Teste</p>
-            </div>
-          </div>
-          <!-- Sidebar Menu-->
-          <ul class="sidebar-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Painel</span></a></li>
-            
-            
-                
-            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Cadastro</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="form-componants.html"><i class="fa fa-circle-o"></i> Cadastrar dados</a></li>                
-				<li><a href="cad_procedimento.html"><i class="fa fa-circle-o"></i> Cadastrar Procedimento</a></li>
-				<li><a href="cad_diagnosticos.html"><i class="fa fa-circle-o"></i> Cadastrar diagnóstico</a></li>
-				           
-              </ul>			  
-            </li>
-			
-			 <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Atualização</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                
-                <li><a href="page-user.html"><i class="fa fa-circle-o"></i> Atualizar informações</a></li>				
-				<li><a href="atualizar_diagnosticos.php"><i class="fa fa-circle-o"></i> Atualizar diagnosticos</a></li>                
-              </ul>			  
-            </li>
-			
-			 <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Informações</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="Procedimentos.html"><i class="fa fa-circle-o"></i> Agendamentos</a></li>
-                <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Clientes cadastrados</a></li>
-				<li><a href="listar_procedimentos.html"><i class="fa fa-circle-o"></i> Listar procedimentos</a></li>
-				<li><a href="listar_diagnosticos.html"><i class="fa fa-circle-o"></i> Listar diagnosticos</a></li>
-				
-              </ul>
-            </li>
-			
-			
-			<li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Agendamento</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">               
-                 <li><a href="page-calendar.html"><i class="fa fa-circle-o"></i>Agendar horario</a></li>
-              </ul>
-            </li>
-			
-            <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Outros</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">                
-                <li><a href="page-login.html"><i class="fa fa-circle-o"></i> Página de login</a></li>
-                <li><a href="page-user.html"><i class="fa fa-circle-o"></i> Página de usuário</a></li>
-                <li><a href="page-lockscreen.html"><i class="fa fa-circle-o"></i> Página de lock</a></li>
-                <li><a href="page-error.html"><i class="fa fa-circle-o"></i> Página de erro</a></li>
-                <li><a href="page-invoice.html"><i class="fa fa-circle-o"></i> Página de impressão</a></li>                
-              </ul>
-            </li>         
-          </ul>
-        </section>
-      </aside>
+ <?php
+	include_once("cabecalho.php");
+  ?>
       <div class="content-wrapper">
         <div class="page-title">
           <div>
@@ -158,6 +71,7 @@ if(isset($_SESSION["resposta"])){
             <div class="card">
               <h3 class="card-title">Cadastrar informações</h3>
               <div class="card-body">
+              <!--Formulário de cadastro de diagnóstico-->
                 <form action="../Controller/Diagnostico.php" method="post" id="cad_diag">
                   <div class="form-group">
                     <label class="control-label">CPF</label>	  	

@@ -10,6 +10,15 @@
     Página com o formulário de atualização de diagnósticos.
 
   */
+
+  if(isset($_GET['pagina'])){
+      $itens_por_pagina = 25 * intval($_GET['pagina']);
+      if($itens_por_pagina < 0){
+        $itens_por_pagina = 0;
+      }
+  }else{
+      $itens_por_pagina = 0;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,105 +34,11 @@
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     -->
-    <script type="text/javascript">
-      
-
-    </script>
+    
   </head>
-  <body class="sidebar-mini fixed">
-    <div class="wrapper">
-      <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.html">Shalon</a>
-        <nav class="navbar navbar-static-top">
-          <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
-          <!-- Navbar Right Menu-->
-          <div class="navbar-custom-menu">
-            <ul class="top-nav">
-              <!--Notification Menu-->
-              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
-                <ul class="dropdown-menu">
-                  <li class="not-head">Você tem 0 novas notoficações.</li>
-                  
-                </ul>
-              </li>
-              <!-- User Menu-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
-                <ul class="dropdown-menu settings-menu">
-                  <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Configurações</a></li>
-                  <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
-                  <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Sair</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Side-Nav-->
-      <aside class="main-sidebar hidden-print">
-        <section class="sidebar">
-          <div class="user-panel">
-            <div class="pull-left image"><img class="img-circle" src="imagens/user.png" alt="User Image"></div>
-            <div class="pull-left info">
-              <p>Aléx dos Santos</p>
-              <p class="designation">Administrador</p>
-            </div>
-          </div>
-          <!-- Sidebar Menu-->
-          <ul class="sidebar-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Painel</span></a></li>
-            
-            
-                
-            <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Cadastro</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="form-componants.html"><i class="fa fa-circle-o"></i> Cadastrar dados</a></li>                
-				<li><a href="cad_procedimento.html"><i class="fa fa-circle-o"></i> Cadastrar Procedimento</a></li>
-				<li><a href="cad_diagnosticos.php"><i class="fa fa-circle-o"></i> Cadastrar diagnóstico</a></li>
-				           
-              </ul>			  
-            </li>
-			
-			 <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Atualização</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                
-                <li><a href="page-user.html"><i class="fa fa-circle-o"></i> Atualizar informações</a></li>				
-				<li><a href="atualizar_dignosticos.html"><i class="fa fa-circle-o"></i> Atualizar diagnosticos</a></li>                
-              </ul>			  
-            </li>
-			
-			 <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Informações</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="Procedimentos.html"><i class="fa fa-circle-o"></i> Agendamentos</a></li>
-                <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Clientes cadastrados</a></li>
-				<li><a href="listar_procedimentos.html"><i class="fa fa-circle-o"></i> Listar procedimentos</a></li>
-				<li><a href="listar_diagnosticos.html"><i class="fa fa-circle-o"></i> Listar diagnosticos</a></li>
-				
-              </ul>
-            </li>
-			
-			
-			<li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Agendamento</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">               
-                 <li><a href="page-calendar.html"><i class="fa fa-circle-o"></i>Agendar horario</a></li>
-              </ul>
-            </li>
-			
-            <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Outros</span><i class="fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                
-                <li><a href="page-login.html"><i class="fa fa-circle-o"></i> Página de login</a></li>
-                <li><a href="page-user.html"><i class="fa fa-circle-o"></i> Página de usuário</a></li>
-                <li><a href="page-lockscreen.html"><i class="fa fa-circle-o"></i> Página de lock</a></li>
-                <li><a href="page-error.html"><i class="fa fa-circle-o"></i> Página de erro</a></li>
-                <li><a href="page-invoice.html"><i class="fa fa-circle-o"></i> Página de impressão</a></li>
-                
-                
-              </ul>
-            </li>
-         
-          </ul>
-        </section>
-      </aside>
+ <?php
+	include_once("cabecalho.php");
+  ?>
       <div class="content-wrapper">
         <div class="page-title">
           <div>
@@ -142,7 +57,7 @@
           <div class="col-md-8">
             <div class="card">
               <h3 class="card-title" style="margin-bottom:0px;">Consultar Diagnósticos</h3>
-              <form method="post">
+              <form method="get">
                     <div class="form-group">
                       <div class="col-xs-12 col-sm-6"><input class="form-control" type="text" placeholder="Nome do cliente" name="cpf" id="cpf"></div>
                       <div class="col-sm-2"><input class="form-control" type="submit" value="Buscar" name="ok"></div>         
@@ -150,12 +65,18 @@
                    </form> 
               <div class="card-body">
                   <?php
-                      /*O primeiro if verifica se a variavél $_POST['cpf'] está preenchida, caso seja verdadeiro essa verificação 
-                    o programa faz a conexão no banco de dados, em seguida a variavél local $result recebe os diagnósticos encontrados no banco de dados relacionados ao cpf informado, em seguida é listado todos os registro com três botões de ação, um que redireciona o usuário para a tela de visualização dos dados, o segundo botão leva para a tela de alteração de dados, e o terceiro deleta o item selecionado.
+                      /*O primeiro if verifica se a variável $_POST['cpf'] está preenchida, caso seja verdadeiro essa verificação 
+                    o programa faz a conexão com o banco de dados, em seguida a variável local $result recebe os diagnósticos encontrados no banco de dados relacionados ao cpf informado, em seguida é listado todos os registro com três botões de ação, um que redireciona o usuário para a tela de visualização dos dados, o segundo botão leva para a tela de alteração de dados, e o terceiro deleta o item selecionado.
                       */
-                     if(isset($_POST['cpf'])){                      
-                      $connect = mysqli_connect('localhost','root','', 'projeto shalon');                  
-                      $result = mysqli_query($connect, "SELECT p.Nome, d.Funcionario,DATE_FORMAT(d.data, '%d/%m/%y') as data, d.ID from pessoa p, cliente c, diagnostico d where '".$_POST['cpf']."' = p.Nome and p.CPF = c.CPF and c.ID = d.ID_Cliente")or die("Erro!");
+                     if(isset($_GET['cpf'])){                      
+                      $connect = mysqli_connect('localhost','root','', 'projeto shalon');
+
+                      $result = mysqli_query($connect, "SELECT p.Nome, d.Funcionario,DATE_FORMAT(d.data, '%d/%m/%y') as data, d.ID from pessoa p, cliente c, diagnostico d where '".$_GET['cpf']."' = p.cpf and p.CPF = c.CPF and c.ID = d.ID_Cliente LIMIT 25 offset ".$itens_por_pagina)or die(mysqli_error($connect));
+
+                      $pegar_todos = mysqli_query($connect,  "SELECT p.Nome, d.Funcionario,DATE_FORMAT(d.data, '%d/%m/%y') as data, d.ID from pessoa p, cliente c, diagnostico d where '".$_GET['cpf']."' = p.cpf and p.CPF = c.CPF and c.ID = d.ID_Cliente");
+
+                      $num_paginas = ceil(mysqli_num_rows($pegar_todos)/25);
+
                       if(mysqli_num_rows($result) == 0){
                         echo "<script type='text/javascript'>
                                   alert('Cliente não encontrado');
@@ -178,6 +99,27 @@
                                   </td></tr>";                    
                         }
                         echo "</table>";
+                        ?>
+                            <nav aria-label="Page navigation">
+                              <ul class="pagination">
+                                <li>
+                                  <a href="atualizar_diagnosticos.php?pagina=0&cpf=<?php echo $_GET['cpf'];?>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                  </a>
+                                </li>
+                                <?php
+                                  for($i=0; $i<$num_paginas; $i++){
+                                    echo "<li><a href='atualizar_diagnosticos.php?pagina=".$i."&cpf=".$_GET['cpf']."'>".$i."</a></li>";
+                                  }
+                                ?>
+                                <li>
+                                  <a href='atualizar_diagnosticos.php?pagina=<?php echo $num_paginas-1; echo "&cpf=".$_GET['cpf'];?>' aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </nav>
+                        <?php
                       }
                       mysqli_close($connect);
                       $_POST['cpf'] = NULL; 

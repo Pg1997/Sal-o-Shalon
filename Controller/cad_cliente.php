@@ -21,25 +21,25 @@
 	$senha = $_POST['senha'];
 	$cpf = $_POST['cpf'];
 
-	#If para verificar a variavél $_POST['cardiaco'].
+	#If para verificar a variável $_POST['cardiaco'].
 	if(isset($_POST['cardiaco'])){
 		$cardiaco = 1;
 	}else{
 		$cardiaco = 0;
 	}
-	#If para verificar a variavél $_POST['gravidez'].
+	#If para verificar a variável $_POST['gravidez'].
 	if(isset($_POST['gravidez'])){
 		$gravidez = 1;
 	}else{
 	 	$gravidez = 0;
 	}
-	#If para verificar a variavél $_POST['amamenta'].
+	#If para verificar a variável $_POST['amamenta'].
 	if(isset($_POST['amamenta'])){
 		$amamenta = 1;
 	}else{
 		$amamenta = 0;
 	}
-	#If para verificar a variavél $_POST['hipertenso'].
+	#If para verificar a variável $_POST['hipertenso'].
 	if(isset($_POST['hipertenso'])){
 		$hiper = 1;
 	}else{
@@ -47,7 +47,7 @@
 	}	
 
 	#Comando para inserir dados na tablea cliente no banco de dados.
-	$result = mysqli_query(conecta(), "insert into cliente (CPF, senha, status, Patologias, Tratamento, Gestante, Alergia, Cardiaco, Hipertenso, lactante) values('".$cpf."', '".$senha."', 'at', '".$pato."', '".$trat."', ".$gravidez.", '".$alergia."', ".$cardiaco.", ".$hiper.", ".$amamenta.")")or die("Erro!");
+	$result = mysqli_query(conecta(), "insert into cliente (CPF, senha, status, Patologias, Tratamento, Gestante, Alergia, Cardiaco, Hipertenso, lactante) values('".$cpf."', '".$senha."', 'at', '".$pato."', '".$trat."', ".$gravidez.", '".$alergia."', ".$cardiaco.", ".$hiper.", ".$amamenta.")")or die(mysqli_error($connect));
 
 
 	#Fecha a conexão com o banco.

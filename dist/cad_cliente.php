@@ -1,8 +1,4 @@
 <?php
-  session_start();
-   if(empty($_SESSION['chave']) || $_SESSION['chave']<>'ok'){
-    header("Location:page_login.php");
-  }
   /*
     Autor: Paulo Gabriel Ronchini
     Data: 08/05/2017
@@ -87,12 +83,23 @@
                         <div class="checkbox col-sm-offset-1 col-xs-offset-1">
                           <label><input type="checkbox" name="cardiaco">Você tem alguma doença cardiaca?</label>
                         </div>
-                        <div class="checkbox col-sm-offset-1 col-xs-offset-1">
-                          <label><input type="checkbox" name="gravidez">Você está gravida?</label>
-                        </div>
-                        <div class="checkbox col-sm-offset-1 col-xs-offset-1">
-                          <label><input type="checkbox" name="amamenta">Você amamenta?</label>
-                        </div>
+                        <?php
+                        if($_GET['sexo'] == 1){
+                            echo "<div class='checkbox col-sm-offset-1 col-xs-offset-1'>
+                              <label><input type='checkbox' name='gravidez' disabled>Você está gravida?</label>
+                            </div>
+                            <div class='checkbox col-sm-offset-1 col-xs-offset-1'>
+                              <label><input type='checkbox' name='amamenta' disabled>Você amamenta?</label>
+                            </div>";
+                        }else{
+                            echo "<div class='checkbox col-sm-offset-1 col-xs-offset-1'>
+                              <label><input type='checkbox' name='gravidez'>Você está gravida?</label>
+                            </div>
+                            <div class='checkbox col-sm-offset-1 col-xs-offset-1'>
+                              <label><input type='checkbox' name='amamenta'>Você amamenta?</label>
+                            </div>";
+                        }
+                        ?>
                         <div class="form-group">
                           <label class="col-sm-3 control-label" >Digite uma senha</label>
                           <div class="col-sm-3">
